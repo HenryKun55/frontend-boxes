@@ -12,7 +12,7 @@ import { SignIn } from '@/pages/SignIn'
 
 export const Router = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.DEV ? '/' : '/frontend-boxes/'}>
       <DOMRoutes>
         <DOMRoute path={Routes.Home} element={<MainLayout />}>
           <DOMRoute path="*" element={<NotFound />} />
