@@ -7,7 +7,7 @@ import {
 import { Routes } from './routes'
 import { MainLayout } from '@/layouts'
 import { NotFound } from '@/pages/NotFound'
-import { Home } from '@/pages/home'
+import { Home } from '@/pages/Home'
 import { SignIn } from '@/pages/SignIn'
 
 export const Router = () => {
