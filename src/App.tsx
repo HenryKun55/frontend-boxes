@@ -6,15 +6,16 @@ import store from '@/store'
 import { Router } from './routes'
 import { Provider } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
+import { themeMode } from './utils/theme'
 
 export const App = () => {
-  const { mode } = useTheme()
+  const theme = useTheme()
 
   return (
     <Provider store={store}>
-      <Flowbite>
+      <Flowbite theme={{ dark: theme.mode === 'dark' || themeMode === 'dark' }}>
         <Router />
-        <ToastContainer theme={mode} />
+        <ToastContainer theme={theme.mode ?? themeMode} />
       </Flowbite>
     </Provider>
   )
