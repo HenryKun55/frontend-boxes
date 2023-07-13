@@ -30,7 +30,7 @@ export const MainLayout = () => {
 
   return (
     <div>
-      <div className="min-h-screen bg-gray-100  dark:bg-gray-800">
+      <div className="min-h-screen bg-gray-100  dark:bg-gray-800 p-4">
         <Menu />
         <Outlet />
       </div>
