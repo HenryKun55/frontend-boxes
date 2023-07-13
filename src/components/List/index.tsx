@@ -1,8 +1,6 @@
 import { Table } from 'flowbite-react'
 import { HTMLAttributes } from 'react'
 
-interface ListProps extends HTMLAttributes<HTMLTableElement> {}
-
 export const List = (props: ListProps) => {
   return (
     <Table {...props}>

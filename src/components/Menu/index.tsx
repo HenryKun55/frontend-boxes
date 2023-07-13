@@ -33,7 +33,7 @@ export const Menu = () => {
           Box
         </span>
       </Navbar.Brand>
-      <div className="flex gap-6 place-items-center md:order-2">
+      <div className="flex gap-3 place-items-center md:order-2">
         <DarkThemeToggle onClickCapture={handleTheme} />
         {user && (
           <Button color="dark" onClick={handleLogout}>

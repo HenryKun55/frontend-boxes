@@ -1,18 +1,12 @@
 export type Order = 'desc' | 'asc'
 
-export type PagedRequest<T = object> = {
-  page?: number
-  perPage?: number
-  sortBy?: keyof T
-  orderBy?: Order
+export type PagedRequest = {
+  take?: number
+  skip?: number
 }
 
-export type Paged<T> = {
-  page: number
-  total: number
-  totalPages: number
-  perPage: number
-  data: T[]
+export type Paged<T, K extends string> = {
+  [key in K]: T[]
 }
 
 export type ApiError = {

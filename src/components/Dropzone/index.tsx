@@ -5,7 +5,7 @@ interface DropzoneProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const Dropzone = (props: DropzoneProps) => {
   return (
-    <div
+    <form
       className={twMerge(
         'flex items-center justify-center w-full',
         props.className,
@@ -32,12 +32,14 @@ export const Dropzone = (props: DropzoneProps) => {
             <span className="font-semibold">Click to upload</span> or drag and
             drop
           </p>
-          <p className="text-xs text-gray-500 dark:text-gray-400">
-            SVG, PNG, JPG or GIF (MAX. 800x400px)
-          </p>
         </div>
-        <input id="dropzone-file" type="file" className="hidden" />
+        <input
+          id="dropzone-file"
+          type="file"
+          className="hidden"
+          accept="image/*"
+        />
       </label>
-    </div>
+    </form>
   )
 }

@@ -13,6 +13,11 @@ export type Box = {
   userId: string
 }
 
+export type BoxTable = {
+  id: string
+  name: string
+}
+
 export type File = {
   id: string
   name: string

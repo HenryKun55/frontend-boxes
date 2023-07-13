@@ -5,7 +5,7 @@ const baseUrl = import.meta.env.VITE_API_URL
 export const TOKEN_KEY = '@token/box'
 
 const api = createApi({
-  tagTypes: ['Users'],
+  tagTypes: ['Users', 'Boxes', 'Files'],
   baseQuery: fetchBaseQuery({
     baseUrl,
     prepareHeaders: headers => {
