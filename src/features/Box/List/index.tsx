@@ -2,35 +2,44 @@ import { useListBoxesQuery } from '@/api/boxes'
 import { Box } from '@/api/models'
 import { Table } from '@/components/Table'
 import { ColumnDef } from '@tanstack/react-table'
-import { useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { Routes } from '@/routes/routes'
+import { BsBox } from 'react-icons/bs'
 
 export const ListBox = () => {
+  const navigate = useNavigate()
   const { data, isLoading } = useListBoxesQuery({ take: 10, skip: 0 })
+
+  const handleNavigate = useCallback((boxId: string) => {
+    navigate(Routes.Box.replace(':boxId', boxId))
+  }, [])
 
   const cols = useMemo<ColumnDef<Box>[]>(
     () => [
       {
-        header: 'Id',
-        cell: row => row.renderValue(),
-        accessorKey: 'id',
+        header: 'Name',
+        cell: row => (
+          <div
+            className="flex gap-1 items-center cursor-pointer"
+            onClick={() => handleNavigate(row.row.original.id)}>
+            <BsBox size={20} />
+            {row.renderValue() as string}
+          </div>
+        ),
+        accessorKey: 'name',
       },
       {
-        header: 'Name',
-        cell: row => row.renderValue(),
-        accessorKey: 'name',
+        header: 'Files',
+        cell: row => row.renderValue() ?? 0,
+        accessorKey: 'files',
       },
     ],
     [],
   )
 
-  console.log(data)
-
   if (isLoading) return <>Loading</>
   if (!data?.boxes) return <>No Data </>
 
-  return (
-    <div className="flex">
-      <Table data={data.boxes} columns={cols} />
-    </div>
-  )
+  return <Table data={data.boxes} columns={cols} />
 }

@@ -6,6 +6,7 @@ import { Navbar, Button, DarkThemeToggle, useTheme } from 'flowbite-react'
 import { useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { BsBox } from 'react-icons/bs'
 
 export const Menu = () => {
   const theme = useTheme()
@@ -28,7 +29,8 @@ export const Menu = () => {
 
   return (
     <Navbar fluid rounded className="bg-gray-100">
-      <Navbar.Brand href="/">
+      <Navbar.Brand href="/" className="gap-3">
+        <BsBox size={22} className="fill-gray-500 dark:fill-gray-200" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
           Box
         </span>

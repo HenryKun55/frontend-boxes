@@ -13,7 +13,9 @@ export type FetchBoxRequest = {
   id: string
 }
 
-export type FetchBoxResponse = Box
+export type FetchBoxResponse = {
+  box: Box
+}
 
 export type ListBoxesRequest = PagedRequest
 export type ListBoxesResponse = Paged<Box, 'boxes'>
