@@ -10,6 +10,7 @@ import { NotFound } from '@/pages/NotFound'
 import { Home } from '@/pages/Home'
 import { SignIn } from '@/pages/SignIn'
 import { Box } from '@/pages/Box'
+import { SignUp } from '@/pages/SignUp'
 
 export const Router = () => {
   return (
@@ -21,6 +22,7 @@ export const Router = () => {
           <DOMRoute path={Routes.Box} element={<Box />} />
         </DOMRoute>
         <DOMRoute path={Routes.SignIn} element={<SignIn />} />
+        <DOMRoute path={Routes.SignUp} element={<SignUp />} />
         <DOMRoute path={Routes.NotFound} element={<NotFound />} />
       </DOMRoutes>
     </BrowserRouter>

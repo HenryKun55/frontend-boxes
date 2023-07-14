@@ -18,9 +18,9 @@ export const CreateBox = () => {
   const onSubmit = useCallback((values: unknown) => {
     const data = values as FormProps
     toast.promise(createBox(data).unwrap(), {
-      pending: 'Criando...',
-      error: 'Ocorreu um erro, tente novamente',
-      success: 'Box criada.',
+      pending: 'Creating...',
+      error: 'An error has occurred, please try again.',
+      success: 'Box created.',
     })
   }, [])
 

@@ -8,7 +8,11 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { BsBox } from 'react-icons/bs'
 
-export const Menu = () => {
+export type MenuProps = {
+  path?: Routes
+}
+
+export const Menu = ({ path }: MenuProps) => {
   const theme = useTheme()
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
@@ -27,6 +31,31 @@ export const Menu = () => {
     )
   }
 
+  const actionPaths = () => {
+    switch (true) {
+      case path === Routes.SignIn:
+        return (
+          <Button color="dark" onClick={() => navigate(Routes.SignUp)}>
+            Sign Up
+          </Button>
+        )
+      case path === Routes.SignUp:
+        return (
+          <Button color="dark" onClick={() => navigate(Routes.SignIn)}>
+            Sign In
+          </Button>
+        )
+      case user !== null:
+        return (
+          <Button color="dark" onClick={handleLogout}>
+            Sign out
+          </Button>
+        )
+      default:
+        return null
+    }
+  }
+
   return (
     <Navbar fluid rounded className="bg-gray-100">
       <Navbar.Brand href="/" className="gap-3">
@@ -37,11 +66,7 @@ export const Menu = () => {
       </Navbar.Brand>
       <div className="flex gap-3 place-items-center md:order-2">
         <DarkThemeToggle onClickCapture={handleTheme} />
-        {user && (
-          <Button color="dark" onClick={handleLogout}>
-            Sign out
-          </Button>
-        )}
+        {actionPaths()}
       </div>
     </Navbar>
   )

@@ -10,4 +10,13 @@ export type SignInResponse = {
   user: User
 }
 
+export type SignUpRequest = {
+  username: string
+  password: string
+}
+
+export type SignUpResponse = {
+  user: Omit<User, 'password'>
+}
+
 export type FetchProfileResponse = User

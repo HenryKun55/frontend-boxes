@@ -1,31 +1,32 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useSignInMutation } from '@/api/auth'
 import { useForm } from 'react-hook-form'
 import schema, { FormProps } from './validators'
 import { useCallback } from 'react'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import { Routes } from '@/routes/routes'
+import { useCreateUserMutation } from '@/api/users'
 
-export const SignInForm = () => {
+export const SignUpForm = () => {
   const navigate = useNavigate()
   const { register, handleSubmit } = useForm<FormProps>({
     resolver: zodResolver(schema),
   })
-  const [signIn, { isLoading }] = useSignInMutation()
+  const [createUser, { isLoading }] = useCreateUserMutation()
 
   const onSubmit = useCallback(
     ({ username, password }: FormProps) => {
       toast.promise(
-        signIn({
+        createUser({
           username,
           password,
         })
           .unwrap()
           .then(() => navigate(Routes.Home)),
         {
-          pending: 'Logging...',
+          pending: 'Creating...',
           error: 'An error has occurred, please try again.',
+          success: 'Welcome to Box :)',
         },
       )
     },
@@ -73,7 +74,7 @@ export const SignInForm = () => {
         type="submit"
         className="mt-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         disabled={isLoading}>
-        Login
+        Criar
       </button>
     </form>
   )
