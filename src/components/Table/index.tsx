@@ -14,8 +14,8 @@ interface ReactTableProps<T extends object> {
   columns: ColumnDef<T>[]
   totalPages: number
   page: number
-  nextPage: () => void
-  previousPage: () => void
+  nextPage: (_page: number) => void
+  previousPage: (_page: number) => void
 }
 
 export const Table = <T extends object>({
@@ -37,7 +37,7 @@ export const Table = <T extends object>({
   const handlePage = useCallback(
     (_page: number) => {
       if (currentPage === _page) return
-      return _page < currentPage ? previousPage() : nextPage()
+      return _page < currentPage ? previousPage(_page) : nextPage(_page)
     },
     [currentPage],
   )
@@ -99,8 +99,8 @@ export const Table = <T extends object>({
         <ul className="inline-flex -space-x-px text-sm h-8">
           <li>
             <button
-              className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              onClick={() => previousPage()}
+              className="flex items-center justify-center px-3 h-8 ml-0 leading-tight  text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              onClick={() => previousPage(currentPage - 1)}
               disabled={currentPage === 1}>
               Previous
             </button>
@@ -116,7 +116,8 @@ export const Table = <T extends object>({
                       ? 'bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white'
                       : '',
                   )}
-                  onClick={() => handlePage(thePage)}>
+                  onClick={() => handlePage(thePage)}
+                  disabled={thePage === currentPage}>
                   {thePage}
                 </button>
               </li>
@@ -125,7 +126,7 @@ export const Table = <T extends object>({
           <li>
             <button
               className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              onClick={() => nextPage()}
+              onClick={() => nextPage(currentPage + 1)}
               disabled={totalPages === currentPage}>
               Next
             </button>

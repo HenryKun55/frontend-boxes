@@ -19,13 +19,14 @@ export const ListBox = () => {
     [page],
   )
 
-  const { data: boxList, isLoading } = useListBoxesQuery({ skip: theSkip })
+  const { data: boxList, isLoading } = useListBoxesQuery({
+    take: 10,
+    skip: theSkip,
+  })
 
   const totalPages = useMemo(() => {
     if (!boxList?.count) return 0
-    return boxList.count % 10 === 0
-      ? Number(boxList.count.toString().charAt(0))
-      : 1
+    return Math.ceil(boxList.count / 10)
   }, [boxList])
 
   const handleNavigate = useCallback((boxId: string) => {
@@ -87,8 +88,8 @@ export const ListBox = () => {
         columns={cols}
         count={boxList.count}
         page={page}
-        nextPage={() => setPage(page + 1)}
-        previousPage={() => setPage(page - 1)}
+        nextPage={setPage}
+        previousPage={setPage}
         totalPages={totalPages}
       />
     </div>
