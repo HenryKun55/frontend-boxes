@@ -1,4 +1,4 @@
-import { Box } from '../models'
+import { Box, BoxTable } from '../models'
 import { Paged, PagedRequest } from '../types'
 
 export type CreateBoxRequest = {
@@ -18,7 +18,7 @@ export type FetchBoxResponse = {
 }
 
 export type ListBoxesRequest = PagedRequest
-export type ListBoxesResponse = Paged<Box, 'boxes'>
+export type ListBoxesResponse = Paged<BoxTable>
 
 export type DeleteBoxRequest = {
   id: string

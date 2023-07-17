@@ -16,6 +16,10 @@ export type Box = {
 export type BoxTable = {
   id: string
   name: string
+  userId: string
+  _count: {
+    files: number
+  }
 }
 
 export type File = {

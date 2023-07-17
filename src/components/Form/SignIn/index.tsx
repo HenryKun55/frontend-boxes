@@ -24,7 +24,6 @@ export const SignInForm = () => {
           .unwrap()
           .then(() => navigate(Routes.Home)),
         {
-          pending: 'Logging...',
           error: 'An error has occurred, please try again.',
         },
       )

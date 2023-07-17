@@ -1,3 +1,4 @@
+import { CreateBox } from '@/features/Box/Create'
 import { ListBox } from '@/features/Box/List'
 
 export const Home = () => {
@@ -6,7 +7,10 @@ export const Home = () => {
       <h1 className="mb-4 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
         Upload your files anywhere you are!
       </h1>
-      <ListBox />
+      <div className="w-full max-w-4xl flex flex-col mx-auto gap-8">
+        <CreateBox />
+        <ListBox />
+      </div>
     </div>
   )
 }

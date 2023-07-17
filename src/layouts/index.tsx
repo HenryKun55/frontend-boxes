@@ -32,6 +32,7 @@ export const MainLayout = () => {
     <div>
       <div className="min-h-screen bg-gray-100  dark:bg-gray-800 p-4">
         <Menu />
+        <div className="pt-16"></div>
         <Outlet />
       </div>
     </div>

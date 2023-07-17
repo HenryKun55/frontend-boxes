@@ -57,7 +57,10 @@ export const Menu = ({ path }: MenuProps) => {
   }
 
   return (
-    <Navbar fluid rounded className="bg-gray-100">
+    <Navbar
+      fluid
+      rounded
+      className="bg-gray-100 fixed w-full z-20 top-0 left-0 border-b">
       <Navbar.Brand href="/" className="gap-3">
         <BsBox size={22} className="fill-gray-500 dark:fill-gray-200" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">

@@ -5,8 +5,9 @@ export type PagedRequest = {
   skip?: number
 }
 
-export type Paged<T, K extends string> = {
-  [key in K]: T[]
+export type Paged<T> = {
+  data: T[]
+  count: number
 }
 
 export type ApiError = {
