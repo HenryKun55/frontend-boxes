@@ -19,7 +19,7 @@ export const ModalCreateBox = () => {
             onCancel={() => modalRef.current?.close()}
           />
           <ModalBody>
-            <CreateBox onSubmit={() => modalRef.current?.close()} />
+            <CreateBox />
           </ModalBody>
         </ModalContent>
       </Modal>
