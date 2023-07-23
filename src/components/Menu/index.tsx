@@ -3,10 +3,11 @@ import { useAppDispatch } from '@/store'
 import { selectAuthUser } from '@/store/auth/selector'
 import { logout } from '@/store/auth/slice'
 import { Navbar, Button, DarkThemeToggle, useTheme } from 'flowbite-react'
-import { useCallback } from 'react'
+import { Fragment, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { BsBox } from 'react-icons/bs'
+import { ModalCreateBox } from '@/features/Box/Modal/Create'
 
 export type MenuProps = {
   path?: Routes
@@ -47,9 +48,12 @@ export const Menu = ({ path }: MenuProps) => {
         )
       case user !== null:
         return (
-          <Button color="dark" onClick={handleLogout}>
-            Sign out
-          </Button>
+          <Fragment>
+            <ModalCreateBox />
+            <Button color="dark" onClick={handleLogout}>
+              Sign out
+            </Button>
+          </Fragment>
         )
       default:
         return null
@@ -67,10 +71,13 @@ export const Menu = ({ path }: MenuProps) => {
           Box
         </span>
       </Navbar.Brand>
-      <div className="flex gap-3 place-items-center md:order-2">
-        <DarkThemeToggle onClickCapture={handleTheme} />
-        {actionPaths()}
-      </div>
+      <Navbar.Toggle />
+      <Navbar.Collapse>
+        <div className="flex flex-row justify-end gap-3 place-items-center md:order-2">
+          <DarkThemeToggle onClickCapture={handleTheme} />
+          {actionPaths()}
+        </div>
+      </Navbar.Collapse>
     </Navbar>
   )
 }

@@ -42,10 +42,10 @@ export const Table = <T extends object>({
     [currentPage],
   )
 
-  const theCountOfCurrentPage = useMemo(() => `${currentPage}0`, [currentPage])
+  const theCountOfCurrentPage = useMemo(() => data.length, [currentPage])
 
   return (
-    <div className="w-full max-w-4xlrelative overflow-x-auto shadow-md sm:rounded-lg">
+    <div className="w-full max-w-4xl relative overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full cursor-default">
         <thead className="bg-gray-300 dark:bg-gray-700">
           {table.getHeaderGroups().map(headerGroup => (

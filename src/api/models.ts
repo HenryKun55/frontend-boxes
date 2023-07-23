@@ -27,4 +27,6 @@ export type File = {
   name: string
   path: string
   boxId: string
+  ext: string
+  size: number
 }

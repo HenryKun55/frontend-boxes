@@ -79,7 +79,12 @@ export const ListBox = () => {
   )
 
   if (isLoading) return <>Loading</>
-  if (!boxList?.data?.length) return <>No Data </>
+  if (!boxList?.data?.length)
+    return (
+      <p className="mb-6 text-lg text-center font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
+        Create your first box now!
+      </p>
+    )
 
   return (
     <div className="flex justify-center">

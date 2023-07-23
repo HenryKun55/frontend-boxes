@@ -6,3 +6,7 @@ export type UploadFileRequest = {
 }
 
 export type UploadFileResponse = FileModel
+
+export type DeleteFileRequest = {
+  id: string
+}
